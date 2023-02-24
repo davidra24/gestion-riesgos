@@ -1,21 +1,7 @@
 import React from 'react';
-import { InputField } from '../../components/form-fields/InputField';
-import { SelectField } from '../../components/form-fields/SelectField';
-
-const optionsImpacto = [
-	{ value: 1, label: 'Afectación reputacional' },
-	{ value: 2, label: 'Afectación económica' },
-	{ value: 3, label: 'Afectación reputacional y económica' }
-];
-
-const optionsClasificacion = [
-	{ value: 0, label: 'Daños Activos Físicos' },
-	{ value: 1, label: 'Ejecución y Administración de procesos' },
-	{ value: 2, label: 'Fallas tecnológicas' },
-	{ value: 3, label: 'Fraude Externo' },
-	{ value: 4, label: 'Fraude Interno' },
-	{ value: 5, label: 'Relaciones laborales' }
-];
+import { InputField } from '../../components/formFields/InputField';
+import { SelectField } from '../../components/formFields/SelectField';
+import { optionsClasificacion, optionsImpacto } from '../../utils/listas';
 
 export const IdentificacionDeRiesgo: React.FC = () => (
 	<>

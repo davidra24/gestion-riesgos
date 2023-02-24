@@ -1,4 +1,5 @@
-import { EvaluacionRiesgo } from '../containers/use-cases/EvaluacionRiesgo';
+import React from 'react';
+import { ValoracionModalContainer } from '../containers/useCases/ValoracionModalContainer';
 import { GenericModal } from './GenericModal';
 
 interface modalEvaluacionRiesgoProps {
@@ -13,7 +14,7 @@ export const ModalEvaluacionRiesgo = ({
 	const handleClose = () => setOpen(false);
 	return (
 		<GenericModal open={open} handleClose={handleClose} title='evaluacion-riesgo'>
-			<EvaluacionRiesgo />
+			<ValoracionModalContainer closeModal={handleClose} />
 		</GenericModal>
 	);
 };

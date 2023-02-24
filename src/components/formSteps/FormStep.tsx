@@ -7,8 +7,6 @@ interface formStepProps {
 	children: ReactElement;
 	validationSchema: OptionalObjectSchema<any>;
 	onSubmit?: Function;
-	values?: riesgoModel;
 }
 
-export const FormStep = ({ name = '', children, values }: formStepProps) =>
-	cloneElement(children, { values });
+export const FormStep = ({ name = '', children }: formStepProps) => children;
