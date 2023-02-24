@@ -2,7 +2,13 @@ import React, { cloneElement, ReactElement, ReactNode, useState } from 'react';
 import { Form, Formik, FormikHelpers, FormikValues } from 'formik';
 import { riesgoModel } from '../../types/riesgo.model';
 import { FormNavigation } from './FormNavigation';
-import { RiskStepper } from '../../components/form-steps/RiskStepper';
+import { RiskStepper } from '../../components/formSteps/RiskStepper';
+import {
+	ONE,
+	THIRTY,
+	THREE,
+	ZERO
+} from '../../utils/constants/numbers.constants';
 
 interface multiFormProps {
 	children: Array<ReactNode> | ReactNode;
@@ -15,23 +21,23 @@ export const MultiFormStep = ({
 	initialValues,
 	onSubmit
 }: multiFormProps) => {
-	const [stepNumber, setStepNumber] = useState<number>(0);
+	const [stepNumber, setStepNumber] = useState<number>(ZERO);
 	const [snapshot, setSnapshot] = useState<FormikValues>(initialValues);
 
 	const steps = React.Children.toArray(children) as Array<ReactElement>;
 
 	const step = steps[stepNumber];
 	const totalSteps = steps.length;
-	const isLastStep = stepNumber === totalSteps - 1;
+	const isLastStep = stepNumber === totalSteps - ONE;
 
 	const next = (values: FormikValues) => {
 		setSnapshot(values);
-		if (!isLastStep) setStepNumber(stepNumber + 1);
+		if (!isLastStep) setStepNumber(stepNumber + ONE);
 	};
 
 	const previous = (values: FormikValues) => {
 		setSnapshot(values);
-		setStepNumber(stepNumber - 1);
+		setStepNumber(stepNumber - ONE);
 	};
 
 	const handleSubmit = async (
@@ -55,16 +61,16 @@ export const MultiFormStep = ({
 			onSubmit={handleSubmit}
 			validationSchema={step.props.validationSchema}>
 			{(formik) => (
-				<Form style={{ marginTop: 30 }}>
+				<Form style={{ marginTop: THIRTY }}>
 					<RiskStepper
 						stepNumber={stepNumber}
 						steps={steps}
-						style={{ marginBottom: '3rem' }}
+						style={{ marginBottom: `${THREE}rem` }}
 					/>
-					{cloneElement(step, { values: formik.values })}
+					{step}
 					<FormNavigation
 						isLastStep={isLastStep}
-						hasPrevious={stepNumber > 0}
+						hasPrevious={stepNumber > ZERO}
 						onBackClick={() => previous(formik.values)}></FormNavigation>
 				</Form>
 			)}

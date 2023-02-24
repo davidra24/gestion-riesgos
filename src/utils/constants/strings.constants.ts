@@ -1,0 +1,16 @@
+export const EMPTY_STRING = '';
+export const PROBABILDAD = 'Probabilidad';
+export const IMPACTO = 'Impacto';
+export const ROOT = 'root';
+export const MUY_BAJA = 'Muy baja';
+export const BAJO = 'Bajo';
+export const BAJA = 'Baja';
+export const MEDIA = 'Media';
+export const ALTA = 'ALTA';
+export const MUY_ALTA = 'Muy alta';
+export const LEVE = 'Leve';
+export const MENOR = 'Menor';
+export const MODERADO = 'Moderado';
+export const MAYOR = 'Mayor';
+export const CATASTROFICO = 'Catastrófico ';
+export const EXTREMO = 'Extremo';

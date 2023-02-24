@@ -1,23 +1,23 @@
 export interface atriburosModel {
-	afectacion: string;
-	tipo: string;
-	porcentaje: number;
-	implementacion: string | number;
-	porcentajeImplementacion: number;
-	calificacion: number;
-	documentacion: string;
-	frecuencia: string;
-	evidencia: string;
+	afectacion?: number;
+	tipo?: string;
+	porcentaje?: number;
+	implementacion?: string | number;
+	porcentajeImplementacion?: number;
+	calificacion?: number;
+	documentacion?: number;
+	frecuencia?: number;
+	evidencia?: number;
 }
 
-export interface tratamientoModel {
-	tratamiento: string | number;
-	numeroControl: number;
-	responsableControl: string;
-	accion: string;
-	cumplimientoControl: string;
-	descripcionControl: string;
-	atributos: atriburosModel;
+export interface controlModel {
+	numeroControl?: number;
+	tratamiento?: number;
+	responsableControl?: string;
+	accion?: string;
+	complementoControl?: string;
+	descripcionControl?: string;
+	atributos?: atriburosModel;
 }
 
 export interface probabilidadesModel {
@@ -37,33 +37,35 @@ export interface riesgoModel {
 	valoracionRiesgoInherente: {
 		probabilidadActividad: number;
 		probabilidadInherente: string;
-		porcentajeProbabilidadInherente: 0;
+		porcentajeProbabilidadInherente: number;
 		criteriosImpacto: number;
 		impactoInherente: string;
-		porcentajeImpactoInherente: 0;
+		porcentajeImpactoInherente: number;
 		zonaRiesgoInherente: string;
 	};
 	evaluacionRiesgo: {
 		valoracionControles: {
-			controles: Array<tratamientoModel>;
+			controles: Array<controlModel>;
 			responsableControl: string;
 			dependencia: string;
 		};
 		riesgoResidual: {
 			probabilidades: Array<probabilidadesModel>;
-			porcentajeProbabilidadResidualFinal: 0;
+			porcentajeProbabilidadResidualFinal: number;
 			nivelProbabilidadFinal: string;
-			porcentajeImpactoResidualFinal: string;
+			porcentajeImpactoResidualFinal: number;
 			nivelImpactoFinal: string;
 			zonaRiesgoFinal: string;
 		};
 	};
 	planDeAccion: {
+		tratamiento: Array<number>;
 		planAccion: string;
 		responsable: string;
 		fechaImplementacion: Date;
 		fechaSeguimiento: Date;
-		Seguimiento: string;
+		seguimiento: string;
+		indicador: string;
 		estado: string;
 	};
 	monitoreoSeguimientoControles: {
@@ -76,3 +78,23 @@ export interface riesgoModel {
 export interface riesgoProps {
 	values?: riesgoModel;
 }
+
+export type controlKey =
+	| 'numeroControl'
+	| 'tratamiento'
+	| 'responsableControl'
+	| 'accion'
+	| 'complementoControl'
+	| 'descripcionControl'
+	| 'atributos';
+
+export type atributoKey =
+	| 'afectacion'
+	| 'tipo'
+	| 'porcentaje'
+	| 'implementacion'
+	| 'porcentajeImplementacion'
+	| 'calificacion'
+	| 'documentacion'
+	| 'frecuencia'
+	| 'evidencia';
